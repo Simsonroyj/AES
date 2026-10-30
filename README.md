@@ -8,10 +8,26 @@ AES does not use a Feistel network like DES, it uses variant of Rijndael.
 It has a fixed block size of 128 bits, and a key size of 128, 192, or 256 bits.
 AES operates on a 4 × 4 column-major order array of bytes, termed the state
 # PROGRAM:
-
+```
+#include <stdio.h> 
+#include <string.h> 
+void xorCrypt(char *in, char *key) { 
+for (int i = 0; in[i]; i++) in[i] ^= key[i % strlen(key)]; 
+} 
+int main() { 
+char msg[] = "SIMSON", key[] = "secretkey"; 
+printf("Original: %s\n", msg); 
+xorCrypt(msg, key); 
+printf("Encrypted: %s\n", msg); 
+xorCrypt(msg, key); 
+printf("Decrypted: %s\n", msg); 
+return 0; 
+}
+```
 # OUTPUT:
+<img width="370" height="227" alt="image" src="https://github.com/user-attachments/assets/5302e471-74e3-48c1-80d2-26c343e12d13" />
 
 
 # RESULT:
-
+The program has successfully executed
 
